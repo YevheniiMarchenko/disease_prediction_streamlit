@@ -61,7 +61,7 @@ df_4m = pd.DataFrame(list_4_mers)
 dna_4m = df_to_lists(df_4m)
 fr_4m = occurrence_frequency(dna_4m)
 fr_4m_trg = pd.concat([fr_4m, df_4m[['class']]], axis=1)
-st.dataframe(fr_4m_trg.style.highlight_max(axis=0), 600, 200)
+st.dataframe(fr_4m_trg, 600, 200)
 
 test_4m = pd.read_pickle(uploaded_file)
 df_test = pd.DataFrame(test_4m)
