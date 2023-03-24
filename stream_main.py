@@ -63,7 +63,7 @@ dna_4m = df_to_lists(df_4m)
 fr_4m = occurrence_frequency(dna_4m)
 fr_4m_trg = pd.concat([fr_4m, df_4m[['class']]], axis=1)
 
-test_4m = pd.read_csv(uploaded_file)
+test_4m = pd.read_pickle(uploaded_file)
 df_test = pd.DataFrame(test_4m)
 df_test.drop('class', axis=1, inplace=True)
 seq_test = df_to_lists(df_test)
