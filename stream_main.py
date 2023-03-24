@@ -61,13 +61,14 @@ df_4m = pd.DataFrame(list_4_mers)
 dna_4m = df_to_lists(df_4m)
 fr_4m = occurrence_frequency(dna_4m)
 fr_4m_trg = pd.concat([fr_4m, df_4m[['class']]], axis=1)
-st.dataframe(fr_4m_trg, 600, 200)
 
-test_4m = pd.read_pickle(uploaded_file)
+with open(uploaded_file, 'rb') as handle:
+    test_4m = pd.read_pickle(handle)
 df_test = pd.DataFrame(test_4m)
 df_test.drop('class', axis=1, inplace=True)
 seq_test = df_to_lists(df_test)
 fr_test = occurrence_frequency(seq_test)
+st.dataframe(fr_test, 600, 200)
 
 x_train, x_test, y_train, y_test = train_test_split(fr_4m_trg.loc[:, fr_4m_trg.columns != 'class'],
                                                     fr_4m_trg.loc[:, 'class'].values, test_size=0.2)
